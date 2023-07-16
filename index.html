@@ -10,7 +10,7 @@
   .jumbotron h1.display-4 {
     font-size: 28px; /* Reduced size by 25% */
     font-weight: bold; /* Make the text bold */
-    color: #107895; /* Set text color to a slightly darker shade of the blue used in the .info-box class */
+    color: #000000; /* Set text color to black */
   }
 
   body {
@@ -31,7 +31,11 @@
   }
 
   .jumbotron {
-    background-color: rgba(242, 242, 242, 0.65); /* Set background color to light gray with 35% transparency */
+    display: flex; /* Make the jumbotron a flex container */
+    flex-direction: column; /* Arrange the child elements vertically */
+    justify-content: center; /* Center the child elements horizontally */
+    align-items: center; /* Center the child elements vertically */
+    background-color: rgba(210, 210, 210, 0.65); /* Set background color to slightly darker gray with 35% transparency */
     padding: 15px; /* Reduced padding to decrease height */
     margin-top: 20px; /* Lower the gray box */
     position: relative; /* Make the jumbotron's position relative to position the logo inside it */
@@ -39,10 +43,10 @@
 
   .logo {
     position: absolute;
-    top: 20px; /* Adjust this to move the logo up/down */
-    left: 20px; /* Adjust this to move the logo left/right */
+    top: 10px; /* Move the logo up within the jumbotron */
+    left: 10px; /* Move the logo left within the jumbotron */
     z-index: 1; /* Position the logo above other elements */
-    width: 16.67%; /* Reduce the size of the logo by 50% */
+    width: 11.67%; /* Reduce the size of the logo by 30% */
   }
 
   .info-box {
@@ -68,7 +72,7 @@
 <div class="container">
   <div class="jumbotron text-center">
     <img src="Logo LG.png" class="logo" alt="Logo"> <!-- Moved the logo inside the jumbotron -->
-    <h1 class="display-4 text-primary">Your partner's<br>unseen needs<br><i class="bi bi-lightbulb-fill"></i></h1>
+    <h1 class="display-4">Your partner's<br>unseen needs<br><i class="bi bi-lightbulb-fill"></i></h1> <!-- Removed text-primary class -->
   </div>
   <div class="row">
     <div class="col-12">
