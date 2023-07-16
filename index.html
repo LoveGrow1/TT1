@@ -18,12 +18,26 @@
   }
 
   video {
-    position: absolute; /* Position the video absolutely */
-    top: 0; /* Align the video to the top of the body */
-    left: 0; /* Align the video to the left of the body */
-    width: 100%; /* Set the width of the video to 100% */
-    height: 100%; /* Set the height of the video to 100% */
-    z-index: -1; /* Position the video behind all other elements */
+    position: fixed; /* Position the video absolutely */
+    top: 50%; 
+    left: 50%; 
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100; /* Position the video behind all other elements */
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .jumbotron {
+    background-color: rgba(242, 242, 242, 0.65); /* Set background color to light gray with 35% transparency */
+  }
+
+  .logo {
+    position: absolute;
+    top: 10px; /* Adjust this to move the logo up/down */
+    left: 10px; /* Adjust this to move the logo left/right */
+    z-index: 1; /* Position the logo above other elements */
   }
 
   .info-box {
@@ -42,19 +56,14 @@
     font-size: 18px;
     margin-top: 10px;
   }
-
-  .btn {
-    font-size: 20px;
-    padding: 15px 20px;
-    margin-top: 20px;
-  }
 </style>
 </head>
 <body>
 <video src="Media1-1.mp4" autoplay muted loop playsinline></video>
+<img src="Logo LG.png" class="logo" alt="Logo">
 <div class="container">
   <div class="jumbotron text-center">
-    <h1 class="display-4 text-primary"><i class="bi bi-lightbulb-fill"><br></i> Your partner's<br>unseen needs</h1> <!-- include icon in the heading -->
+    <h1 class="display-4 text-primary">Your partner's<br>unseen needs<br><i class="bi bi-lightbulb-fill"></i></h1>
   </div>
   <div class="row">
     <div class="col-12">
@@ -72,7 +81,6 @@
       </div>
     </div>
   </div>
-  <a href="index.html" class="btn btn-secondary btn-lg btn-block">Back</a>
 </div>
 </body>
 </html>
