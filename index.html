@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Partner's unseen needs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- Add the Bootstrap Icons CSS file -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<style>
+  .jumbotron h1.display-4 {
+    font-size: 28px; /* Reduced size by 25% */
+    font-weight: bold; /* Make the text bold */
+  }
+
+  body {
+    position: relative; /* Position the body relatively so the video can be positioned absolutely */
+    overflow: hidden; /* Hide overflow content to ensure the video doesn't expand past the body */
+  }
+
+  video {
+    position: absolute; /* Position the video absolutely */
+    top: 0; /* Align the video to the top of the body */
+    left: 0; /* Align the video to the left of the body */
+    width: 100%; /* Set the width of the video to 100% */
+    height: 100%; /* Set the height of the video to 100% */
+    z-index: -1; /* Position the video behind all other elements */
+  }
+
+  .info-box {
+    background-color: rgba(173, 216, 230, 0.65); /* Set background color to light blue with 35% transparency */
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .info-box h4 {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .info-box p {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .btn {
+    font-size: 20px;
+    padding: 15px 20px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<video src="Media1-1.mp4" autoplay muted loop></video>
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1 class="display-4 text-primary"><i class="bi bi-lightbulb-fill"><br></i> Your partner's<br>unseen needs</h1> <!-- include icon in the heading -->
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="info-box">
+        <h4>Unseen Need 1:</h4>
+        <p>They might need more affirmation of honesty and openness from you.</p>
+      </div>
+      <div class="info-box">
+        <h4>Unseen Need 2:</h4>
+        <p>They might need assurance that they can express their needs without repercussions.</p>
+      </div>
+      <div class="info-box">
+        <h4>Unseen Need 3:</h4>
+        <p>They might need more emotional support during their tough times.</p>
+      </div>
+    </div>
+  </div>
+  <a href="index.html" class="btn btn-secondary btn-lg btn-block">Back</a>
+</div>
+</body>
+</html>
