@@ -55,6 +55,7 @@
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
+    transition: all 1s ease; /* Add transition property */
   }
 
   .info-box h4 {
@@ -65,6 +66,11 @@
   .info-box p {
     font-size: 18px;
     margin-top: 10px;
+  }
+
+  .fly-out { /* New class to handle the transition */
+    transform: translateY(-1000px); /* This will make the elements fly out of the view */
+    opacity: 0; /* This will fade out the elements as they fly out */
   }
 </style>
 </head>
@@ -100,7 +106,12 @@
   hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
   hammer.on('swipeup', function() {
-    container.style.transform = "translateY(-100%)";
+    // find all info-boxes
+    var boxes = document.getElementsByClassName('info-box');
+    // for each info-box, add the fly-out class
+    Array.from(boxes).forEach(function(box) {
+      box.classList.add('fly-out');
+    });
   });
 </script>
 
