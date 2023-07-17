@@ -6,31 +6,56 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <!-- Add the Bootstrap Icons CSS file -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-<script src="https://hammerjs.github.io/dist/hammer.js"></script> <!-- HammerJS for swipe gesture recognition -->
+<script src="https://hammerjs.github.io/dist/hammer.js"></script>
 <style>
 /* All the previous CSS goes here... */
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+}
+
+.page.active {
+  transform: translateY(-100%);
+}
+
+video {
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 </style>
 </head>
 <body>
-<div id="page1" class="page">
-  <video id="video1" src="Media1-1.mp4" autoplay muted loop playsinline></video>
+<div id="page1" class="page active">
+  <video src="Media1-1.mp4" autoplay muted loop playsinline></video>
   <!-- All your previous content goes here... -->
 </div>
 
-<div id="page2" class="page" style="display: none;"> <!-- The new page is initially hidden -->
-  <video id="video2" src="Pexels-Ekaterina-Bolovtsova-4688569-2160X4096-30Fps.mp4" playsinline></video>
+<div id="page2" class="page">
+  <video src="Pexels-Ekaterina-Bolovtsova-4688569-2160X4096-30Fps.mp4" playsinline></video>
+  <!-- You can put different content here... -->
 </div>
 
 <script>
 window.onload = function() {
-  var hammertime = new Hammer(document.body); // Initialize HammerJS on the body of the page
+  var hammertime = new Hammer(document.body); 
 
-  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL }); // Enable swipe in all directions
+  hammertime.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
-  hammertime.on('swipeup', function(ev) { // Listen for a swipe up event
-    document.getElementById('page1').style.display = 'none'; // Hide the first page
-    document.getElementById('page2').style.display = 'block'; // Show the second page
-    document.getElementById('video2').play(); // Autoplay the video on the second page
+  hammertime.on('swipeup', function(ev) { 
+    document.getElementById('page1').classList.remove('active');
+    document.getElementById('page2').classList.add('active');
+    document.getElementById('video2').play(); 
   });
 };
 </script>
