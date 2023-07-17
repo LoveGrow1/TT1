@@ -20,19 +20,19 @@
   }
 
   #video1, #video2 {
-    position: fixed;
-    top: 50%; 
-    left: 50%; 
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
     z-index: -100;
-    transform: translateX(-50%) translateY(-50%);
+    transform: scale(1.1);
   }
 
   #video2 {
-    transform: translateX(-50%) translateY(100%);
+    transform: scale(1.1);
+    opacity: 0;
   }
 
   .jumbotron {
@@ -59,7 +59,7 @@
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
-    transition: all 1s ease; /* Add transition property */
+    transition: all 1s ease;
   }
 
   .info-box h4 {
@@ -72,14 +72,14 @@
     margin-top: 10px;
   }
 
-  .fly-out { /* New class to handle the transition */
-    transform: translateY(-1000px); /* This will make the elements fly out of the view */
-    opacity: 0; /* This will fade out the elements as they fly out */
+  .fly-out {
+    transform: translateY(-1000px);
+    opacity: 0;
   }
 
-  .fly-in { /* New class to handle the new video */
-    transform: translateX(-50%) translateY(-50%) !important; /* This will make the new video fly in from the bottom */
-    transition: all 1s ease; /* This will animate the movement */
+  .fly-in {
+    opacity: 1 !important;
+    transition: opacity 1s ease;
   }
 </style>
 </head>
@@ -116,12 +116,10 @@
   hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
   hammer.on('swipeup', function() {
-    // find jumbotron, info-boxes and videos separately
     var video1 = document.getElementById('video1');
     var video2 = document.getElementById('video2');
     var jumbotron = document.getElementsByClassName('jumbotron');
     var boxes = document.getElementsByClassName('info-box');
-    // for jumbotron, info-box and video1, add the fly-out class
     video1.classList.add('fly-out');
     Array.from(jumbotron).forEach(function(box) {
       box.classList.add('fly-out');
@@ -129,7 +127,6 @@
     Array.from(boxes).forEach(function(box) {
       box.classList.add('fly-out');
     });
-    // for video2, add a class to fly it in from the bottom
     video2.classList.add('fly-in');
   });
 </script>
