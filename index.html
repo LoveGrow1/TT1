@@ -106,9 +106,9 @@
   hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
   hammer.on('swipeup', function() {
-    // find all info-boxes
-    var boxes = document.getElementsByClassName('info-box');
-    // for each info-box, add the fly-out class
+    // find all info-boxes and the jumbotron
+    var boxes = document.getElementsByClassName('info-box jumbotron');
+    // for each info-box and the jumbotron, add the fly-out class
     Array.from(boxes).forEach(function(box) {
       box.classList.add('fly-out');
     });
