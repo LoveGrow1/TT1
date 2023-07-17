@@ -73,8 +73,7 @@
   }
 
   .fly-out { /* New class to handle the transition */
-    transform: translateY(-1000px); /* This will make the elements fly out of the view */
-    opacity: 0; /* This will fade out the elements as they fly out */
+    transform: translateY(-100%); /* This will make the elements fly out of the view */
   }
 
   .fly-in { /* New class to handle the new video */
@@ -116,21 +115,21 @@
   hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
   hammer.on('swipeup', function() {
-    // find jumbotron, info-boxes and videos separately
-    var video1 = document.getElementById('video1');
-    var video2 = document.getElementById('video2');
-    var jumbotron = document.getElementsByClassName('jumbotron');
+    // find all info-boxes and jumbotron
     var boxes = document.getElementsByClassName('info-box');
-    // for jumbotron, info-box and video1, add the fly-out class
-    video1.classList.add('fly-out');
-    Array.from(jumbotron).forEach(function(box) {
-      box.classList.add('fly-out');
-    });
+    var jumbotron = document.getElementsByClassName('jumbotron');
+    var video1 = document.getElementById('video1');
+    // for each info-box, add the fly-out class
     Array.from(boxes).forEach(function(box) {
       box.classList.add('fly-out');
     });
-    // for video2, add a class to fly it in from the bottom
-    video2.classList.add('fly-in');
+    // do the same for the jumbotron and video1
+    jumbotron[0].classList.add('fly-out');
+    video1.classList.add('fly-out');
+    // after 1 second (the duration of the transition), add the fly-in class to the second video
+    setTimeout(function() {
+      document.getElementById('video2').classList.add('fly-in');
+    }, 1000);
   });
 </script>
 
