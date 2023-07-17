@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 <style>
   .jumbotron h1.display-4 {
     font-size: 28px;
@@ -93,9 +94,13 @@
 </div>
 
 <script>
-  $(window).on('scroll', function() {
-    var scrollTop = $(this).scrollTop();
-    $('#content').css('transform', 'translateY(-' + scrollTop + 'px)');
+  var container = document.getElementById('content');
+  var hammer = new Hammer(container);
+
+  hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+  hammer.on('swipeup', function() {
+    container.style.transform = "translateY(-100%)";
   });
 </script>
 
