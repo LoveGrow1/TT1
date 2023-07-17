@@ -75,8 +75,8 @@
 </style>
 </head>
 <body>
-<video src="Media1-1.mp4" autoplay muted loop playsinline></video>
 <div class="container" id="content">
+  <video src="Media1-1.mp4" autoplay muted loop playsinline></video>
   <div class="jumbotron text-center">
     <img src="White logo.png" class="logo" alt="Logo">
     <h1 class="display-4">Your partner's<br>unseen needs<br><i class="bi bi-lightbulb-fill"></i></h1>
@@ -106,10 +106,14 @@
   hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
   hammer.on('swipeup', function() {
-    // find jumbotron and info-boxes separately
+    // find jumbotron, info-boxes and video separately
+    var video = document.getElementsByTagName('video');
     var jumbotron = document.getElementsByClassName('jumbotron');
     var boxes = document.getElementsByClassName('info-box');
-    // for each jumbotron and info-box, add the fly-out class
+    // for each jumbotron, info-box and video, add the fly-out class
+    Array.from(video).forEach(function(box) {
+      box.classList.add('fly-out');
+    });
     Array.from(jumbotron).forEach(function(box) {
       box.classList.add('fly-out');
     });
