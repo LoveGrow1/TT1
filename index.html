@@ -19,7 +19,7 @@
     overflow: hidden;
   }
 
-  #video {
+  #video1, #video2 {
     position: fixed;
     top: 50%; 
     left: 50%; 
@@ -29,6 +29,10 @@
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
+  }
+
+  #video2 {
+    transform: translateX(-50%) translateY(100%);
   }
 
   .jumbotron {
@@ -55,7 +59,7 @@
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
-    transition: all 1s ease;
+    transition: all 1s ease; /* Add transition property */
   }
 
   .info-box h4 {
@@ -68,15 +72,21 @@
     margin-top: 10px;
   }
 
-  .fly-out {
-    transform: translateY(-1000px);
-    opacity: 0;
+  .fly-out { /* New class to handle the transition */
+    transform: translateY(-1000px); /* This will make the elements fly out of the view */
+    opacity: 0; /* This will fade out the elements as they fly out */
+  }
+
+  .fly-in { /* New class to handle the new video */
+    transform: translateX(-50%) translateY(-50%) !important; /* This will make the new video fly in from the bottom */
+    transition: all 1s ease; /* This will animate the movement */
   }
 </style>
 </head>
 <body>
 <div class="container" id="content">
-  <video id="video" src="Media1-1.mp4" autoplay muted loop playsinline></video>
+  <video id="video1" src="Media1-1.mp4" autoplay muted loop playsinline></video>
+  <video id="video2" src="Pexels-Ekaterina-Bolovtsova-4688569-2160X4096-30Fps.mp4" autoplay muted loop playsinline></video>
   <div class="jumbotron text-center">
     <img src="White logo.png" class="logo" alt="Logo">
     <h1 class="display-4">Your partner's<br>unseen needs<br><i class="bi bi-lightbulb-fill"></i></h1>
@@ -106,25 +116,21 @@
   hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
 
   hammer.on('swipeup', function() {
-    var video = document.getElementById('video');
+    // find jumbotron, info-boxes and videos separately
+    var video1 = document.getElementById('video1');
+    var video2 = document.getElementById('video2');
     var jumbotron = document.getElementsByClassName('jumbotron');
     var boxes = document.getElementsByClassName('info-box');
-
-    video.classList.add('fly-out');
-
+    // for jumbotron, info-box and video1, add the fly-out class
+    video1.classList.add('fly-out');
     Array.from(jumbotron).forEach(function(box) {
       box.classList.add('fly-out');
     });
     Array.from(boxes).forEach(function(box) {
       box.classList.add('fly-out');
     });
-
-    setTimeout(function(){
-      video.src = "Pexels-Ekaterina-Bolovtsova-4688569-2160X4096-30Fps.mp4";
-      video.load();
-      video.play();
-      video.classList.remove('fly-out');
-    }, 1000);
+    // for video2, add a class to fly it in from the bottom
+    video2.classList.add('fly-in');
   });
 </script>
 
