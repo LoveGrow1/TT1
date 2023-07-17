@@ -32,7 +32,7 @@
   }
 
   #video2 {
-    display: none;
+    z-index: -101;
   }
 
   .jumbotron {
@@ -78,9 +78,9 @@
   }
 
   .fly-in { /* New class to handle the new video */
-    display: block !important;
     transform: translateX(-50%) translateY(-50%) !important; /* This will make the new video fly in from the bottom */
     transition: all 1s ease; /* This will animate the movement */
+    z-index: -99;
   }
 </style>
 </head>
@@ -124,14 +124,16 @@
     var boxes = document.getElementsByClassName('info-box');
     // for jumbotron, info-box and video1, add the fly-out class
     video1.classList.add('fly-out');
+    video2.classList.add('fly-out'); // Start the second video at the same time as the first one.
+    setTimeout(function(){
+      video2.classList.add('fly-in'); // Continue the second video movement.
+    }, 500); // This delay should be half of the transition time.
     Array.from(jumbotron).forEach(function(box) {
       box.classList.add('fly-out');
     });
     Array.from(boxes).forEach(function(box) {
       box.classList.add('fly-out');
     });
-    // for video2, add a class to fly it in from the bottom
-    video2.classList.add('fly-in');
   });
 </script>
 
