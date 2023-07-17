@@ -32,7 +32,7 @@
   }
 
   #video2 {
-    transform: translateX(-50%) translateY(100%);
+    display: none;
   }
 
   .jumbotron {
@@ -78,6 +78,7 @@
   }
 
   .fly-in { /* New class to handle the new video */
+    display: block !important;
     transform: translateX(-50%) translateY(-50%) !important; /* This will make the new video fly in from the bottom */
     transition: all 1s ease; /* This will animate the movement */
   }
